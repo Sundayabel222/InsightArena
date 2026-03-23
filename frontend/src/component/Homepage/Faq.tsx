@@ -40,7 +40,7 @@ export default function Faq() {
   };
 
   return (
-    <section className="relative py-16 px-4" style={{ background: "#0d1229" }}>
+    <section className="relative py-16 px-4" style={{ background: "none" }}>
       <div className="max-w-3xl mx-auto">
         {/* Title */}
         <motion.h2
@@ -65,7 +65,7 @@ export default function Faq() {
                 transition={{ duration: 0.4, delay: index * 0.07 }}
                 viewport={{ once: true }}
                 style={{
-                  background: "#121633",
+                  background: "#101828",
                   border: "1px solid #1e2d45",
                   borderRadius: "8px",
                 }}
