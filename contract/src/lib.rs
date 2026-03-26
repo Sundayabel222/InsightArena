@@ -3,6 +3,7 @@
 pub mod config;
 pub mod errors;
 pub mod escrow;
+pub mod invite;
 pub mod market;
 pub mod oracle;
 pub mod prediction;
@@ -235,6 +236,23 @@ impl InsightArenaContract {
     /// Returns `0` if no fees have been collected yet. Never panics.
     pub fn get_treasury_balance(env: Env) -> i128 {
         escrow::get_treasury_balance(&env)
+    }
+
+    // ── Invite ────────────────────────────────────────────────────────────────
+
+    /// Generate a unique 8-character invite code for a private market.
+    ///
+    /// Validation:
+    /// 1. `creator` must be the actual market creator.
+    /// 2. `max_uses` must be at least 1.
+    pub fn generate_invite_code(
+        env: Env,
+        creator: Address,
+        market_id: u64,
+        max_uses: u32,
+        expires_in_seconds: u64,
+    ) -> Result<Symbol, InsightArenaError> {
+        invite::generate_invite_code(env, creator, market_id, max_uses, expires_in_seconds)
     }
 }
 
